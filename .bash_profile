@@ -5,6 +5,11 @@ for file in bash_prompt exports aliases functions extra; do
   [ -e "$file" ] && source "$file"
 done
 
+# Add bash completion
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+fi
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
