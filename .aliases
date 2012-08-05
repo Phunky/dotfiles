@@ -1,8 +1,13 @@
+# SSHFS
+sshfs="-oreconnect,volname=phunky,noappledouble,allow_other"
+alias phunky="mkdir /Volumes/phunky 2> /dev/null; sshfs phunky@phunky.co.uk:/home/phunky/ /Volumes/phunky $sshfs"
+
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+alias dots="cd ~/.dotfiles"
 
 # List all files colorized in long format, including dot files
 alias la="ls -Gla"
