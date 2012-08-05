@@ -8,7 +8,10 @@ alias -- -="cd -"
 alias la="ls -Gla"
 
 # List only directories
-alias lsd='ls -l | grep "^d"'
+alias lsd='ls -lG | grep "^d"'
+
+# List all files horz with color, including dots
+alias lsa="ls -aG"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
@@ -56,6 +59,9 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-re
 
 # Sublime text 2
 alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+
+# Re-source bash
+alias src="source $HOME/.bash_profile"
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
