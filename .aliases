@@ -18,6 +18,12 @@ alias lsd='ls -lG | grep "^d"'
 # List all files horz with color, including dots
 alias lsa="ls -aG"
 
+# always ask for confirmation when removing files
+alias rm='rm -i';
+
+# always ask for confirmation when copying files
+alias cp='cp -i';
+
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
 
