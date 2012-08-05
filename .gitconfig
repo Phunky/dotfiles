@@ -45,8 +45,8 @@
   a = "!git add . && git status"
   au = "!git add -u && git status"
   aa = "!git add . && git add -u && git status"
-  c = commit
-  cm = "git commit -m"
-  l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-  ll = log --stat --abbrev-commit
-  gl = log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"
+  c = "commit"
+  cm = "!git commit -m"
+  l = "log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'"
+  ll = "log --stat --abbrev-commit"
+  gl = "log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
