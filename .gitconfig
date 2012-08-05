@@ -5,6 +5,8 @@
   Name = Mark Harwood
   Email = mark@phunky.co.uk
   Editor = subl
+[credential]
+  helper = osxkeychain
 [apply]
   whitespace = fix
 [core]
