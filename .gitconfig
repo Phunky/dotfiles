@@ -49,6 +49,8 @@
   aa = "!git add . && git add -u && git status"
   c = "commit"
   cm = "!git commit -m"
+  co = "checkout"
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   l = "log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'"
   ll = "log --stat --abbrev-commit"
   gl = "log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
