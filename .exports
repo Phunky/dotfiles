@@ -1,3 +1,5 @@
+export PATH="/usr/local/bin:$PATH"
+
 # Make vim the default editor
 export EDITOR="subl"
 # Don’t clear the screen after quitting a manual page
