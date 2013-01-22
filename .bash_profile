@@ -20,6 +20,3 @@ shopt -s nocaseglob
 if [ "$PS1" ]; then
     complete -cf sudo
 fi
-
-# Add tab completion for `defaults read|write NSGlobalDomain`
-complete -W "NSGlobalDomain" defaults

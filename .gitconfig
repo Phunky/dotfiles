@@ -4,9 +4,7 @@
 [User]
   Name = Mark Harwood
   Email = mark@phunky.co.uk
-  Editor = subl
-[credential]
-  helper = osxkeychain
+  Editor = nano
 [apply]
   whitespace = fix
 [core]
@@ -52,3 +50,4 @@
   l = "log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'"
   ll = "log --stat --abbrev-commit"
   gl = "log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
+  undo = "!git push -f origin HEAD^:master"

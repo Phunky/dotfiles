@@ -1,6 +1,3 @@
-# SSHFS
-sshfs="-oreconnect,volname=phunky,noappledouble,allow_other"
-alias phunky="mkdir /Volumes/phunky 2> /dev/null; sshfs phunky@phunky.co.uk:/home/phunky/ /Volumes/phunky $sshfs"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
@@ -20,10 +17,10 @@ alias lsd='ls -lG | grep "^d"'
 alias lsa="ls -aG"
 
 # always ask for confirmation when removing files
-alias rm='rm -i';
+#alias rm='rm -i';
 
 # always ask for confirmation when copying files
-alias cp='cp -i';
+#alias cp='cp -i';
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
@@ -40,9 +37,6 @@ alias flush="dscacheutil -flushcache"
 alias sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-# Start an HTTP server from a directory
-alias server="open http://localhost:8080/ && python -m SimpleHTTPServer 8080"
-
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
@@ -50,7 +44,6 @@ alias c="tr -d '\n' | pbcopy"
 alias dl="cd ~/Downloads"
 alias sites="cd ~/Sites"
 alias g="git"
-alias s="subl ."
 
 # File size
 alias fs="stat -f \"%z bytes\""
@@ -58,25 +51,8 @@ alias fs="stat -f \"%z bytes\""
 # ROT13-encode text. Works for decoding, too! ;)
 alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 
-# Show/hide hidden files in Finder
-alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
-
-# Disable Spotlight
-alias spotoff="sudo mdutil -a -i off"
-# Enable Spotlight
-alias spoton="sudo mdutil -a -i on"
-
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
-# Sublime text 2
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
-
 # Re-source bash
 alias src="source $HOME/.bash_profile"
-
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume 10'"
-alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"

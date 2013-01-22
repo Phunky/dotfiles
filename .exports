@@ -1,8 +1,6 @@
-export NODE_PATH=/usr/local/lib/node
-export PATH="$NODE_PATH:/usr/local/bin:$PATH"
-
 # Make vim the default editor
-export EDITOR="subl"
+export EDITOR="nano"
+
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
@@ -10,5 +8,6 @@ export MANPAGER="less -X"
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
+
 # Make some commands not show up in history
 export HISTIGNORE="ls:ls *"
