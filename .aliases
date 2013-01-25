@@ -7,14 +7,14 @@ alias -- -="cd -"
 alias dots="cd ~/.dotfiles"
 
 # List all files colorized in long format, including dot files
-alias ls="ls -G"
-alias la="ls -Gla"
+alias ls="ls -G --color"
+alias la="ls -Gla --color"
 
 # List only directories
-alias lsd='ls -lG | grep "^d"'
+alias lsd='ls -lG --color | grep "^d"'
 
 # List all files horz with color, including dots
-alias lsa="ls -aG"
+alias lsa="ls -aG --color"
 
 # always ask for confirmation when removing files
 #alias rm='rm -i';
