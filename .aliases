@@ -1,4 +1,8 @@
 
+# SSH alias
+alias nas="ssh -p 1337 nas@nas.phunky.co.uk"
+alias linode="ssh phunky@phunky.co.uk"
+
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
