@@ -2,6 +2,7 @@
 # SSH alias
 alias nas="ssh -p 1337 nas@nas.phunky.co.uk"
 alias linode="ssh phunky@phunky.co.uk"
+alias dev="ssh mark@DEVLAMP01"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
@@ -11,14 +12,14 @@ alias -- -="cd -"
 alias dots="cd ~/.dotfiles"
 
 # List all files colorized in long format, including dot files
-alias ls="ls -G --color"
-alias la="ls -Gla --color"
+alias ls="ls -G"
+alias la="ls -Gla"
 
 # List only directories
-alias lsd='ls -lG --color | grep "^d"'
+alias lsd='ls -lG | grep "^d"'
 
 # List all files horz with color, including dots
-alias lsa="ls -aG --color"
+alias lsa="ls -aG "
 
 # always ask for confirmation when removing files
 #alias rm='rm -i';
