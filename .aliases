@@ -2,6 +2,7 @@
 # SSH alias
 alias nas="ssh -p 1337 nas@nas.phunky.co.uk"
 alias linode="ssh phunky@phunky.co.uk"
+alias dev="ssh mark@DEVLAMP01"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
@@ -19,6 +20,7 @@ alias lsd='ls -lG | grep "^d"'
 
 # List all files horz with color, including dots
 alias lsa="ls -aG"
+alias lsa="ls -aG "
 
 # always ask for confirmation when removing files
 #alias rm='rm -i';
