@@ -20,3 +20,6 @@ shopt -s nocaseglob
 if [ "$PS1" ]; then
     complete -cf sudo
 fi
+
+#UMASK BITCH
+umask 0002
