@@ -50,6 +50,7 @@ alias c="tr -d '\n' | pbcopy"
 alias dl="cd ~/Downloads"
 alias sites="cd ~/Sites"
 alias g="git"
+alias artisan='php artisan'
 
 # File size
 alias fs="stat -f \"%z bytes\""
