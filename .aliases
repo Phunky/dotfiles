@@ -1,18 +1,22 @@
 
 # SSH alias
-alias nas="ssh -p 1337 nas@nas.phunky.co.uk"
+alias nas="ssh -p 1337 nas@10.0.0.10"
 alias linode="ssh phunky@phunky.co.uk"
-alias dev="ssh mark@DEVLAMP01"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+
+# Shotcuts
 alias dots="cd ~/.dotfiles"
+alias dl="cd ~/Downloads"
+alias sites="cd ~/Sites"
+alias g="git"
 
 # List all files colorized in long format, including dot files
-alias ls="ls -G"
+# alias ls="ls -G"
 alias la="ls -Gla"
 
 # List only directories
@@ -45,12 +49,6 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
-
-# Shortcuts
-alias dl="cd ~/Downloads"
-alias sites="cd ~/Sites"
-alias g="git"
-alias artisan='php artisan'
 
 # File size
 alias fs="stat -f \"%z bytes\""
