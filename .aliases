@@ -1,5 +1,6 @@
 
 # SSH alias
+
 alias nas="ssh -p 1337 nas@10.0.0.10"
 alias linode="ssh phunky@phunky.co.uk"
 

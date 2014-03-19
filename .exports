@@ -1,12 +1,7 @@
 
 # Paths
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-
-# OSX Path with Homebrew
-export NODE_PATH="/usr/local/lib/node"
-export PATH="$(brew --prefix)/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
-export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
-export PATH="$(brew --prefix ruby):$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH=$(brew --prefix ruby)/bin:$PATH
 
 # Make vim the default editor
 export EDITOR="subl"
