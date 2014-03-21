@@ -4,6 +4,9 @@
 alias nas="ssh -p 1337 nas@10.0.0.10"
 alias linode="ssh phunky@phunky.co.uk"
 
+alias dev_mount="sshfs -p 22 mark@192.168.0.201:/var/www/mark /Volumes/DEVLAMP01 -o auto_cache,reconnect,defer_permissions,volname=DEVLAMP01"
+alias rac_mount="sshfs -p 22 mark@46.38.161.193:/www /Volumes/racbusinessclub -o auto_cache,reconnect,defer_permissions,volname=racbusinessclub.co.uk"
+
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
