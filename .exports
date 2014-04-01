@@ -1,10 +1,15 @@
 
 # Paths
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH=$(brew --prefix ruby)/bin:$PATH
 
-# Make vim the default editor
-export EDITOR="subl"
+# Couple of extras for OSX
+if [[ $OSTYPE == darwin* ]]; then
+  export PATH=$(brew --prefix ruby)/bin:$PATH
+
+  # Make vim the default editor
+  export EDITOR="subl"
+fi
+
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
