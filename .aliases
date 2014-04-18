@@ -1,6 +1,6 @@
 alias dev_mount="umount ~/Volumes/DEVLAMP01;rm -r ~/Volumes/DEVLAMP01;mkdir /Volumes/DEVLAMP01;sshfs -p 22 mark@192.168.0.201:/var/www/mark /Volumes/DEVLAMP01 -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=DEVLAMP01"
 
-alias rac_mount="umount ~/Volumes/racbusinessclub;rm -r ~/Volumes/racbusinessclub;mkdir /Volumes/DEVLAMP01;sshfs -p 22 mark@46.38.161.193:/www /Volumes/racbusinessclub -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=racbusinessclub.co.uk"
+alias rac_mount="umount ~/Volumes/racbusinessclub;rm -r ~/Volumes/racbusinessclub;mkdir /Volumes/racbusinessclub;sshfs -p 22 mark@46.38.161.193:/www /Volumes/racbusinessclub -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=racbusinessclub.co.uk"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
