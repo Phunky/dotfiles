@@ -23,4 +23,4 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="ls:ls *"
 
 # Docker
-export DOCKER_HOST=localhost
+export DOCKER_HOST=tcp://localhost:4243

@@ -42,6 +42,7 @@
   insteadOf = "gist:"
 [alias]
   s = status
+  sb = "status -sb"
   a = "!git add . && git status"
   au = "!git add -u && git status"
   aa = "!git add . && git add -u && git status"
