@@ -1,2 +1,2 @@
-setenv CLICOLOR 1
-setenv LSCOLORS dxfxcxdxbxegedabagacad
+export CLICOLOR=1
+export LSCOLORS=dxfxcxdxbxegedabagacad
