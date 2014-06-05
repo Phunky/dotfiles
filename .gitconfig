@@ -4,7 +4,6 @@
 [User]
   Name = Mark Harwood
   Email = mark@phunky.co.uk
-  Editor = subl
 [apply]
   whitespace = fix
 [core]
