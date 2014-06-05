@@ -72,4 +72,4 @@ for app in Safari Finder Dock Mail; do killall "$app"; done
 echo "0x08000100:0" > ~/.CFUserTextEncoding
 
 # Add subl cmdline sortcuts
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
