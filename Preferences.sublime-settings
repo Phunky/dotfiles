@@ -1,6 +1,6 @@
 {
 	"caret_style": "wide",
-	"color_scheme": "Packages/Madebyphunky Color Scheme/madebyphunky.tmTheme",
+	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
@@ -37,12 +37,13 @@
 		"logs",
 		"_cache"
 	],
-	"font_face": "Source Code Pro",
+	"font_face": "InputMono-Thin",
 	"font_options":
 	[
-		"subpixel_antialias"
+		"subpixel_antialias",
+		"directwrite"
 	],
-	"font_size": 11.5,
+	"font_size": 12,
 	"gpu_window_buffer": "true",
 	"gutter": true,
 	"highlight_line": true,
@@ -50,8 +51,8 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"PHP Modern"
+		"PHP Modern",
+		"Vintage"
 	],
 	"indent_guide_options":
 	[
@@ -60,13 +61,19 @@
 	"indent_subsequent_lines": true,
 	"indent_to_bracket": false,
 	"line_numbers": true,
-	"line_padding_bottom": 2,
-	"line_padding_top": 2,
-	"margin": 0,
+	"line_padding_bottom": 3,
+	"line_padding_top": 3,
+	"margin": 3,
+	"rulers":
+	[
+		80,
+		100,
+		120
+	],
 	"scroll_past_end": true,
 	"spell_check": false,
 	"tab_size": 2,
-	"theme": "Spacegray Light.sublime-theme",
+	"theme": "Spacegray.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"tree_animation_enabled": false,
 	"trim_automatic_white_space": true,
