@@ -1,15 +1,15 @@
 
+# Paths
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 # Couple of extras for OSX
 if [[ $OSTYPE == darwin* ]]; then
   export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
-  export PATH="$(brew --prefix ruby)/bin:$PATH"
+  export PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
 
 # default editor
 export EDITOR="nano"
-
-# Paths
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
