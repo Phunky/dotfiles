@@ -32,7 +32,6 @@ install homebrew/php/php55 --with-gmp --with-homebrew-curl --with-homebrew-opens
 
 install git
 install curl
-install php55
 install php55-imagick
 install php55-mcrypt
 install php55-xdebug

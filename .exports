@@ -1,13 +1,13 @@
 
 # Couple of extras for OSX
-#if [[ $OSTYPE == darwin* ]]; then
+if [[ $OSTYPE == darwin* ]]; then
   # Override default apps
-  # export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
-  # export PATH="$(brew --prefix ruby)/bin:$PATH"
-#fi
+  export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+  export PATH="$(brew --prefix ruby)/bin:$PATH"
+fi
 
 # default editor
-export EDITOR="nano"
+export EDITOR="subl"
 
 # Paths
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
