@@ -53,3 +53,4 @@
   ll = "log --stat --abbrev-commit"
   gl = "log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
   undo = "!git push -f origin HEAD^:master"
+  mdiff = "diff --name-status master...HEAD"
