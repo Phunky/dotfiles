@@ -5,12 +5,14 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Couple of extras for OSX
 if [[ $OSTYPE == darwin* ]]; then
   # Override default apps
+  export PATH="$(brew --prefix homebrew/php/php54)/bin:$PATH"
   export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+  export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
   export PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
 
 # Add composer bin to PATH
-export PATH="~/.composer/vendor/bin/:$PATH"
+export PATH="~/.composer/vendor/bin:$PATH"
 
 # default editor
 export EDITOR="subl"

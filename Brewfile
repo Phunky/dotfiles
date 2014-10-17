@@ -1,70 +1,67 @@
 #!/bin/bash
 
 # Make sure we’re using the latest Homebrew
-update
+brew update
 
 # Upgrade any already-installed formulae
-upgrade
+brew upgrade
 
 # taps
-tap homebrew/dupes
-tap homebrew/versions
+brew tap homebrew/dupes
+brew tap homebrew/versions
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(--prefix coreutils)/libexec/gnubin` to `$PATH`.
-install coreutils
+brew install coreutils
 # Install some other useful utilities like `sponge`
-install moreutils
+brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-install findutils
+brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`
-install gnu-sed --default-names
+brew install gnu-sed --default-names
 # Install Bash 4
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
-install bash
-install bash-completion
+brew install bash
+brew install bash-completion
 
 # Install wget with IRI support
-install wget --enable-iri
+brew install wget --enable-iri
 
 # Install more recent versions of some OS X tools
-install grep
-install screen
+brew install grep
+brew install screen
 
 # Install other useful binaries
-install git
-install curl
-install mariadb
-install openssl
-install sshfs
-install
+brew install git
+brew install curl
+brew install mariadb
+brew install openssl
+brew install sshfs
 
 # Setup apache
-tap homebrew/apache
-install httpd24
+brew tap homebrew/apache
+brew install httpd24
 
 # Setup PHP
-tap homebrew/homebrew-php
-install php55 --homebrew-apxs --with-debug --with-homebrew-openssl --with-homebrew-curl
-install php55-imagick
-install php55-mcrypt
-install php55-xdebug
-install composer
+brew tap homebrew/homebrew-php
+brew install php56 --homebrew-apxs --with-debug --with-homebrew-openssl --with-homebrew-curl
+brew install php56-imagick
+brew install php56-mcrypt
+brew install php56-xdebug
+brew install composer
 
 # Casks
-install caskroom/cask/brew-cask
-cask install chrome
-cask install google-chrome
-cask install google-chrome-canary
-cask install firefox-aurora
-cask install alfred
-cask install dropbox
-cask install iterm2
-cask install launchrocket
-cask install onepassword
-cask install sequel-pro
-cask install spectacle
-cask install sublime-text3
+brew install caskroom/cask/brew-cask
+brew cask install google-chrome
+brew cask install google-chrome-canary
+#brew  cask install firefox-aurora
+brew cask install alfred
+brew cask install dropbox
+brew cask install iterm2
+brew cask install onepassword
+brew cask install sequel-pro
+brew cask install spectacle
+brew cask install sublime-text3
 
 # Remove outdated versions from the cellar
-cleanup
+brew cleanup
