@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Include dotfiles in LS
+shopt -s dotglob
+
+# Setup symlinks
+cd $HOME/dotfiles/link/
+for file in *; do
+  ln -sf $HOME/dotfiles/link/$file ~/$file
+done
+
+# Run homebrew
+echo "Running homebrew... we may stall!"
+cd $HOME/dotfiles/init/
+./brew.sh

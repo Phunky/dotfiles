@@ -2,17 +2,20 @@
 # Paths
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
+# Add my dotfiles to my path, could symlink these but don't want  to have to rerun setup just for this.
+export PATH="$PATH:~/dotfiles/bin"
+
 # Couple of extras for OSX
-if [[ $OSTYPE == darwin* ]]; then
-  # Override default apps
-  export PATH="$(brew --prefix homebrew/php/php54)/bin:$PATH"
-  export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
-  export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
-fi
+# if [[ $OSTYPE == darwin* ]]; then
+#   # Override default apps
+#   export PATH="$(brew --prefix homebrew/php/php54)/bin:$PATH"
+#   export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+#   export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+#   export PATH="/usr/local/opt/ruby/bin:$PATH"
+# fi
 
 # Add composer bin to PATH
-export PATH="~/.composer/vendor/bin:$PATH"
+# export PATH="~/.composer/vendor/bin:$PATH"
 
 # default editor
 export EDITOR="subl"

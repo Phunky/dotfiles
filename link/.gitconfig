@@ -10,6 +10,22 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+  preloadindex = true
+  abbrev = 12
+[diff]
+  # Use more time to create better diffs. E.g. matching opening/closing braces
+    # from neighbour functions.
+    algorithm = patience
+
+    # Tells Git to detect renames. If set to "true", it will enable basic
+    # rename detection. If set to "copies", it will detect copies, as well.
+    renames = copies
+[push]
+      # Make "git push" or "git push <remote>" only push the current branch to
+      # the tracked branch (regardless of its remote name) as opposed to pushing
+      # all branches with a matching name on the remote. See "An asymmetry
+      # between git pull and push": http://longair.net/blog/?p=572
+      default = tracking
 [color]
   ui = auto
 [color "branch"]
