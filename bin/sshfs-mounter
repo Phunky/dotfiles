@@ -1,0 +1,37 @@
+#!/bin/sh
+# Mounts SSH account locally
+# sshfs-mounter -h dev2 -p ~/ -l dev2
+
+# Handle args
+while [[ $# > 1 ]]
+do
+key="$1"
+
+case $key in
+    -h|--host)
+    HOST="$2"
+    shift
+    ;;
+    -p|--remote-path)
+    REMOTE_PATH="$2"
+    shift
+    ;;
+    -l|--label)
+    LABEL="$2"
+    shift
+    ;;
+    *)
+    # unknown option
+    ;;
+esac
+shift
+done
+echo
+if [[ ! -z "$LABEL" && ! -z "$HOST" && ! -z "$REMOTE_PATH" ]]; then
+  # Reset and/or setup folders
+  umount ~/mnt/${LABEL}
+  rm -r ~/mnt/${LABEL}
+  mkdir ~/mnt/${LABEL}
+  # Mount that trick.
+  sshfs ${HOST}:${REMOTE_PATH} ~/mnt/${LABEL} -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=${LABEL}
+fi
