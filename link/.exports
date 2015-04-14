@@ -29,7 +29,4 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 
 # Make some commands not show up in history
-export HISTIGNORE="ls:ls *"
-
-# Docker
-# export DOCKER_HOST=tcp://localhost:4243
+# export HISTIGNORE="ls:ls *"

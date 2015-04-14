@@ -1,29 +1,22 @@
-alias dev_mount="umount ~/Volumes/DEVLAMP01;rm -r ~/Volumes/DEVLAMP01;mkdir /Volumes/DEVLAMP01;sshfs -p 22 mark@192.168.0.201:/var/www/mark /Volumes/DEVLAMP01 -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=DEVLAMP01"
-
-alias rac_mount="umount ~/Volumes/racbusinessclub;rm -r ~/Volumes/racbusinessclub;mkdir /Volumes/racbusinessclub;sshfs -p 22 mark@46.38.161.193:/www /Volumes/racbusinessclub -oauto_cache,reconnect,defer_permissions,negative_vncache,volname=racbusinessclub.co.uk"
-
 # Easier navigation: .., ..., ~ and -
-# alias ..="cd .."
-# alias ...="cd ../.."
-# alias ~="cd ~" # `cd` is probably faster to type though
-# alias -- -="cd -"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
 
 # Shotcuts
 alias dots="cd ~/.dotfiles"
-alias dl="cd ~/Downloads"
-alias sites="cd ~/Sites"
 alias g="git"
 
 # List all files colorized in long format, including dot files
-# alias ls="ls -G"
-# alias la="ls -Gla"
+alias ls="ls -G"
+alias la="ls -Gla"
 
 # List only directories
-# alias lsd='ls -lG | grep "^d"'
+alias lsd='ls -lG | grep "^d"'
 
 # List all files horz with color, including dots
-# alias lsa="ls -aG"
-# alias lsa="ls -aG "
+alias lsa="ls -aG"
 
 # always ask for confirmation when removing files
 #alias rm='rm -i';
@@ -31,12 +24,8 @@ alias g="git"
 # always ask for confirmation when copying files
 #alias cp='cp -i';
 
-# Undo a `git push`
-# alias undopush="git push -f origin HEAD^:master"
-
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
 # Flush Directory Service cache
@@ -59,4 +48,4 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
 # Re-source bash
-alias src="source $HOME/.bash_profile"
+alias src="source $HOME/.bashrc"

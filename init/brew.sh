@@ -9,6 +9,7 @@ brew upgrade
 # taps
 brew tap homebrew/dupes
 brew tap homebrew/versions
+brew tap neovim/homebrew-neovim
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(--prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -36,6 +37,8 @@ brew install git
 brew install curl
 brew install openssl
 brew install sshfs
+brew install ngrep
+brew install --HEAD neovim
 
 # Setup MySQL
 #brew install mariadb
