@@ -57,14 +57,17 @@ brew install --HEAD neovim
 
 # Casks
 brew install caskroom/cask/brew-cask
-brew cask install 1password
+
+brew tap caskroom/versions
+
+brew cask install 1password-beta
 brew cask install firefox
 brew cask install qlcolorcode
 brew cask install spectacle
 brew cask install alfred
 brew cask install google-chrome
 brew cask install qlmarkdown
-brew cask install sublime-text
+brew cask install sublime-text3
 brew cask install betterzipql
 brew cask install google-chrome-canary
 brew cask install qlprettypatch
@@ -78,7 +81,7 @@ brew cask install hex-fiend
 brew cask install quicklook-csv
 brew cask install the-unarchiver
 brew cask install colorpicker-developer
-brew cask install iterm2
+brew cask install iterm2-beta
 brew cask install quicklook-json
 brew cask install vagrant
 brew cask install colorpicker-skalacolor
