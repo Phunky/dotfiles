@@ -28,10 +28,15 @@ shift
 done
 echo
 if [[ ! -z "$LABEL" && ! -z "$HOST" && ! -z "$REMOTE_PATH" ]]; then
-  # Reset and/or setup folders
-  umount ~/mnt/${LABEL}
-  rm -r ~/mnt/${LABEL}
-  mkdir ~/mnt/${LABEL}
-  # Mount that trick.
-  sshfs ${HOST}:${REMOTE_PATH} ~/mnt/${LABEL} -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=${LABEL}
+  # Check if already mounted
+  if mount | grep ~/mnt/${LABEL} > /dev/null; then
+    echo "Already mounted at ~/mnt/${LABEL}"
+  else
+    # Check ~/mnt/${LABEL} exists
+    if [ ! -d "$DIRECTORY" ]; then
+      mkdir ~/mnt/${LABEL}
+    fi
+    # Mount that trick.
+    sshfs ${HOST}:${REMOTE_PATH} ~/mnt/${LABEL} -o auto_cache,reconnect,defer_permissions,negative_vncache,volname=${LABEL}
+  fi
 fi
