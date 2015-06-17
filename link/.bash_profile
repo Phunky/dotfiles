@@ -32,4 +32,4 @@ if [ "$PS1" ]; then
 fi
 
 #UMASK BITCH
-umask 022
+umask 002

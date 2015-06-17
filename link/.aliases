@@ -9,7 +9,7 @@ alias dots="cd ~/.dotfiles"
 alias g="git"
 
 # List all files colorized in long format, including dot files
-alias ls="ls -G"
+#alias ls="ls -G"
 alias la="ls -Gla"
 
 # List only directories
