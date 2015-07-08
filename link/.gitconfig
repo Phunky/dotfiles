@@ -1,6 +1,9 @@
 [Github]
   username = phunky
   user = phunky
+[Gitlab]
+  username = Phunky
+  user = Phunky
 [User]
   Name = Mark Harwood
   Email = mark@phunky.co.uk
