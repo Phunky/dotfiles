@@ -9,7 +9,7 @@ alias dots="cd ~/.dotfiles"
 alias g="git"
 
 # List all files colorized in long format, including dot files
-#alias ls="ls -G"
+# alias ls="ls -G"
 alias la="ls -Gla"
 
 # List only directories
@@ -49,3 +49,12 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-re
 
 # Re-source bash
 alias src="source $HOME/.bashrc"
+
+# Restart DNSmasq osx
+alias dns="sudo launchctl stop homebrew.mxcl.dnsmasq && sudo launchctl start homebrew.mxcl.dnsmasq"
+
+# Some PHP tooling aliases
+alias artisan="php artisan"
+
+# thefuck
+alias fuck='eval $(thefuck $(fc -ln -1)); history -r'
