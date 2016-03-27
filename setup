@@ -1,10 +1,22 @@
 #!/bin/bash
 
-# Include dotfiles in LS
-shopt -s dotglob
+# OSX tingsls
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Install and setup Homebrew and Cask
+  ./init/brew.sh
+
+  # Setup OSX how I like
+  ./init/osx.sh
+fi
 
 # Setup symlinks
 cd $HOME/dotfiles/link/
 for file in *; do
   ln -sf $HOME/dotfiles/link/$file ~/$file
 done
+
+# Add fish shell
+sudo echo "/usr/local/bin/fish" >> /etc/shells
+
+# Set fish as default shell
+chsh -s /usr/local/bin/fish

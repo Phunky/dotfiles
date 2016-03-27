@@ -4,6 +4,12 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Disable menu bar transparency
 defaults write -g AppleEnableMenuBarTransparency -bool false
 
+# Enable Dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
+
+# Enable automatically hide the menu bar
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # Expand save panel by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 
@@ -32,7 +38,7 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 #defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 
 # Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+#defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Increase window resize speed for Cocoa applications
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
@@ -56,9 +62,6 @@ defaults write com.apple.Mail DisableSendAnimations -bool true
 # Enable Dashboard dev mode (allows keeping widgets on the desktop)
 #defaults write com.apple.dashboard devmode -bool true
 
-# Reset Launchpad
-#rm ~/Library/Application\ Support/Dock/*.db
-
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
@@ -70,6 +73,3 @@ for app in Safari Finder Dock Mail; do killall "$app"; done
 
 # Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
 echo "0x08000100:0" > ~/.CFUserTextEncoding
-
-# Add subl cmdline sortcuts
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl

@@ -1,6 +1,6 @@
 {
   "caret_style": "wide",
-  "color_scheme": "Packages/Theme - Spacephunk/spacephunk.tmTheme",
+  "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
   "default_line_ending": "unix",
   "draw_white_space": "all",
   "ensure_newline_at_eof_on_save": true,
@@ -52,8 +52,8 @@
   "hot_exit": true,
   "ignored_packages":
   [
-    "Vintage",
-    "PHP Modern"
+    "PHP Modern",
+    "Vintage"
   ],
   "indent_guide_options":
   [
@@ -65,6 +65,7 @@
   "line_padding_bottom": 3,
   "line_padding_top": 3,
   "margin": 3,
+  "material_theme_small_tab": true,
   "rulers":
   [
     80,
@@ -74,7 +75,7 @@
   "scroll_past_end": true,
   "spell_check": false,
   "tab_size": 2,
-  "theme": "Spacegray.sublime-theme",
+  "theme": "Material-Theme.sublime-theme",
   "translate_tabs_to_spaces": true,
   "tree_animation_enabled": false,
   "trim_automatic_white_space": true,
