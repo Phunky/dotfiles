@@ -1,0 +1,1 @@
+/Users/phunky/.config/fisherman/hulk/fish_title.fish

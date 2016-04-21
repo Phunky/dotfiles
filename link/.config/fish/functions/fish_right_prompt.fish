@@ -1,0 +1,1 @@
+/Users/phunky/.config/fisherman/hulk/fish_right_prompt.fish

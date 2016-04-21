@@ -17,6 +17,6 @@ set -x HISTFILESIZE              $HISTSIZE
 set -x HISTCONTROL               ignoredups
 
 # Homebrew OAUTH token
-set -x HOMEBREW_GITHUB_API_TOKEN c3d1b6e5cd86b4b294591496c65104ca385f9396
+set -x HOMEBREW_GITHUB_API_TOKEN 785587d3fdf1919ac6729cb641ac5505fdcf896d
 
 
