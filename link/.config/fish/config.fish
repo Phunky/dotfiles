@@ -1,9 +1,7 @@
-
-set fisher_home ~/.local/share/fisherman
-set fish_config ~/.config/fish
-set fisher_config ~/.config/fisherman
-
-source $fisher_home/config.fish
+# Source all configs
+for file in ~/.config/fish/conf.d/*.fish
+    source $file
+end
 
 # Paths
 set -x PATH                      /usr/local/bin $PATH
@@ -15,8 +13,3 @@ set -x PATH                      $PATH ~/dotfiles/bin
 set -x HISTSIZE                  32768
 set -x HISTFILESIZE              $HISTSIZE
 set -x HISTCONTROL               ignoredups
-
-# Homebrew OAUTH token
-set -x HOMEBREW_GITHUB_API_TOKEN 785587d3fdf1919ac6729cb641ac5505fdcf896d
-
-
