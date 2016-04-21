@@ -12,6 +12,7 @@ brew upgrade
 # taps
 brew tap homebrew/dupes
 brew tap homebrew/versions
+brew tap welldan97/updater
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(--prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -31,16 +32,18 @@ brew install grep
 brew install screen
 
 # Install other useful binaries
+brew install curl
 brew install fish
+brew install git
+brew install homebrew/php/composer
+brew install homebrew/php/php70
 brew install htop
 brew install imagemagick
-brew install screenfetchw
-brew install git
-brew install curl
-brew install openssl
-brew install sshfs
 brew install ngrep
 brew install node
+brew install openssl
+brew install screenfetch
+brew install sshfs
 brew install updater
 
 # Casks
@@ -49,19 +52,19 @@ brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 brew cask install 1password
+brew cask install alfred
 brew cask install atom
+brew cask install dropbox
 brew cask install gitkraken
 brew cask install google-chrome
-brew cask install radiant-player
-brew cask install steam
-brew cask install totalspaces
-brew cask install alfred
-brew cask install dropbox
 brew cask install iterm2-beta
 brew cask install moom
 brew cask install openemu
+brew cask install radiant-player
 brew cask install sequel-pro
+brew cask install steam
 brew cask install sublime-text3
+brew cask install totalspaces
 brew cask install vagrant
 
 # Remove outdated versions from the cellar
