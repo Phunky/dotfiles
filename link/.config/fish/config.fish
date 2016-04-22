@@ -13,3 +13,6 @@ set -x PATH                      $PATH ~/dotfiles/bin
 set -x HISTSIZE                  32768
 set -x HISTFILESIZE              $HISTSIZE
 set -x HISTCONTROL               ignoredups
+
+# Github OAuth Token for Homebrew
+set -x HOMEBREW_GITHUB_API_TOKEN da779371bfd9b0ebea33d2c1e5355503b6885193

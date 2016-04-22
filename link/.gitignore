@@ -1,8 +1,5 @@
-# Ctags file
-tags
-
-# Sublimetext
-*.sublime-*
+# Fisherman is not needed
+.config/fisherman
 
 # OS X Finder turdlets
 *.DS_Store*
