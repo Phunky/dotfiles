@@ -1,5 +1,5 @@
 function fisher
-    set -g fisher_version "2.0.0-beta"
+    set -g fisher_version "2.1.10"
     set -g fisher_spinners ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏
 
     function __fisher_show_spinner
@@ -163,6 +163,8 @@ function fisher
         case install
             if __fisher_install $items
                 __fisher_log okay "Done in "(__fisher_get_epoch_in_ms $elapsed | __fisher_humanize_duration) $__fisher_stderr
+            else
+                return
             end
 
         case update
@@ -444,10 +446,10 @@ function __fisher_plugin_url_clone_async -a url name
             set -lx GIT_ASKPASS /bin/echo
 
             if command git clone -q --depth 1 '$url' '$fisher_cache/$name' ^ /dev/null
-                  printf '$okay""OKAY""$nc Fetching $okay%s$nc %s\n' '$name' '→ $hm_url'
+                  printf '$okay""OKAY""$nc Fetching $okay%s$nc %s\n' '$name' '→ $hm_url' > $__fisher_stderr
                   command cp -rf '$fisher_cache/$name' '$fisher_config'
             else
-                  printf '$error""ARGH""$nc Fetching $error%s$nc %s\n' '$name' '→ $hm_url'
+                  printf '$error""ARGH""$nc Fetching $error%s$nc %s\n' '$name' '→ $hm_url' > $__fisher_stderr
             end
       " > /dev/stderr &
 
@@ -507,17 +509,14 @@ end
 
 
 function __fisher_self_update
-    set -l raw_url "https://raw.githubusercontent.com/fisherman/fisherman/master/fisher.fish"
-    set -l fake_qs (date "+%s")
     set -l file (status --current-filename)
 
     if test "$file" != "$fish_config/functions/fisher.fish"
-        __fisher_log warn "
-            Non-standard setup detected.
-        " $__fisher_stderr
-
         return 1
     end
+
+    set -l raw_url "https://raw.githubusercontent.com/fisherman/fisherman/master/fisher.fish"
+    set -l fake_qs (date "+%s")
 
     set -l previous_version "$fisher_version"
 
@@ -534,14 +533,14 @@ function __fisher_self_update
     set -l new_version "$fisher_version"
 
     if test "$previous_version" = "$fisher_version"
-        __fisher_log okay "@fisherman is up to date@" $__fisher_stderr
+        __fisher_log okay "fisherman is up to date" $__fisher_stderr
     else
         __fisher_log okay "You are now running fisherman @$fisher_version@" $__fisher_stderr
 
         __fisher_log info "
-
             To see the change log, please visit:
-            __https://github.com/fisherman/fisherman/releases__
+            https://github.com/fisherman/fisherman/releases
+
         " $__fisher_stderr
     end
 end
@@ -558,7 +557,7 @@ function __fisher_update_path_async -a name path
         pushd $path
 
         if not command git fetch -q origin master ^ /dev/null
-            printf '$error""ARGH""$nc Fetching $error%s$nc\n' '$name'
+            printf '$error""ARGH""$nc Fetching $error%s$nc\n' '$name' > $__fisher_stderr
             exit
         end
 
@@ -568,10 +567,10 @@ function __fisher_update_path_async -a name path
         command git clean -qdfx
 
         if test -z \"\$commits\" -o \"\$commits\" -eq 0
-            printf '$okay""OKAY""$nc Latest $okay%s$nc\n' '$name'
+            printf '$okay""OKAY""$nc Latest $okay%s$nc\n' '$name' > $__fisher_stderr
             command cp -rf '$path' '$fisher_cache/$name'
         else
-            printf '$okay""OKAY""$nc $okay%s$nc new commits $okay%s$nc\n' \$commits '$name'
+            printf '$okay""OKAY""$nc $okay%s$nc new commits $okay%s$nc\n' \$commits '$name' > $__fisher_stderr
         end
 
     " > /dev/stderr &
@@ -831,7 +830,7 @@ function __fisher_list_plugin_directory -a item
 
     set -l color (set_color $fish_color_command)
     set -l nc (set_color normal)
-    set -l inside_tree
+    set -l previous_tree
 
     if contains -- --no-color $argv
         set color
@@ -844,20 +843,19 @@ function __fisher_list_plugin_directory -a item
     for file in .* **
         if test -f "$file"
             switch "$file"
-                case .\*
-                    printf "    %s\n" $file
-                    set inside_tree
-
                 case \*/\*
-                    if test -z "$inside_tree"
-                        printf "    $color%s/$nc\n" (dirname $file)
-                        set inside_tree -
+                    set -l current_tree (dirname $file)
+
+                    if test "$previous_tree" != "$current_tree"
+                        printf "    $color%s/$nc\n" $current_tree
                     end
+
                     printf "        %s\n" (basename $file)
+
+                    set previous_tree $current_tree
 
                 case \*
                     printf "    %s\n" $file
-                    set inside_tree
             end
         end
     end > $fd
@@ -1376,7 +1374,7 @@ function __fisher_usage
 end
 
 
-function __fisher_help -a command number
+function __fisher_help -a cmd number
     if test -z "$argv"
         set -l page "$fisher_cache/fisher.1"
 
@@ -1421,21 +1419,12 @@ function __fisher_help -a command number
 end
 
 
-function __fisher_self_uninstall
-    if test -z "$fish_config" -o -z "$fisher_cache" -o -z "$fisher_config" -o -L "$fisher_cache" -o -L "$fisher_config"
-        __fisher_log error "
+function __fisher_self_uninstall -a yn
+    set -l file (status --current-filename)
 
-            Some of fisherman variables refer to symbolic links or were undefined.
-
-            If you are running a custom fisherman setup, remove the following
-            directories and files by yourself:
-
-            @$fisher_cache@
-            @$fisher_config@
-            @$fish_config/functions/fisher.fish@
-            @$fish_config/completions/fisher.fish@
-
-        " /dev/stderr
+    if test -z "$fish_config" -o -z "$fisher_cache" -o -z "$fisher_config" -o -L "$fisher_cache" -o -L "$fisher_config" -o "$file" != "$fish_config/functions/fisher.fish"
+        __fisher_log warn "Global or non-standard setup detected."
+        __fisher_log says "Use your package manager to remove fisherman." /dev/stderr
 
         return 1
     end
@@ -1443,7 +1432,7 @@ function __fisher_self_uninstall
     set -l u (set_color -u)
     set -l nc (set_color normal)
 
-    switch "$argv"
+    switch "$yn"
         case -y --yes
         case \*
             __fisher_log warn "
@@ -1504,16 +1493,10 @@ function __fisher_self_uninstall
 
     functions -e __fisher_show_spinner
 
-    __fisher_log okay "
-
-        Thanks for trying out fisherman. If you have a moment,
-        please share your feedback with us on the issue tracker.
-
-        @https://github.com/fisherman/fisherman/issues@
-
-    " $__fisher_stderr
+    __fisher_log okay "Arrr! So long and thanks for all the fish." $__fisher_stderr
 
     functions -e __fisher_log
+    functions -e fisher
 end
 
 
@@ -1533,9 +1516,6 @@ function __fisher_man_page_write
     # .
     # .P
     # where \fIcommand\fR can be one of: \fBi\fRnstall, \fBu\fRpdate, \fBls\fR, \fBrm\fR and \fBh\fRelp
-    # .
-    # .SH "DESCRIPTION"
-    # fisherman is a zero\-configuration, concurrent plugin manager for the fish shell\.
     # .
     # .SH "USAGE"
     # Install a plugin\.
@@ -1719,8 +1699,8 @@ function __fisher_man_page_write
     # .
     # .SH "FAQ"
     # .
-    # .SS "1\. What fish version is required?"
-    # fisherman was built for the latest fish, but at least 2\.2\.0 is required\. If you can\'t upgrade your build, append the following code to your \fB~/\.config/fish/config\.fish\fR for snippet support\.
+    # .SS "1\. What is the required fish version?"
+    # fisherman was built for fish >= 2\.3\.0\. If you are using 2\.2\.0, append the following code to your \fB~/\.config/fish/config\.fish\fR for snippet support\.
     # .
     # .IP "" 4
     # .
@@ -1734,39 +1714,7 @@ function __fisher_man_page_write
     # .
     # .IP "" 0
     # .
-    # .SS "2\. How do I install fish on OS X?"
-    # With Homebrew\.
-    # .
-    # .IP "" 4
-    # .
-    # .nf
-    #
-    # brew install fish
-    # .
-    # .fi
-    # .
-    # .IP "" 0
-    # .
-    # .SS "3\. How do I install the latest fish on some Linux?"
-    # With git, from the source\.
-    # .
-    # .IP "" 4
-    # .
-    # .nf
-    #
-    # sudo apt\-get \-y install git gettext automake autoconf \e
-    #     ncurses\-dev build\-essential libncurses5\-dev
-    #
-    # git clone \-q \-\-depth 1 https://github\.com/fish\-shell/fish\-shell
-    # cd fish\-shell
-    # autoreconf && \./configure
-    # make && sudo make install
-    # .
-    # .fi
-    # .
-    # .IP "" 0
-    # .
-    # .SS "4\. How do I use fish as my default shell?"
+    # .SS "2\. How do I use fish as my default shell?"
     # Add fish to the list of login shells in \fB/etc/shells\fR and make it your default shell\.
     # .
     # .IP "" 4
@@ -1780,7 +1728,7 @@ function __fisher_man_page_write
     # .
     # .IP "" 0
     # .
-    # .SS "5\. How do I uninstall fisherman?"
+    # .SS "3\. How do I uninstall fisherman?"
     # Run
     # .
     # .IP "" 4
@@ -1793,30 +1741,10 @@ function __fisher_man_page_write
     # .
     # .IP "" 0
     # .
-    # .SS "6\. Is fisherman compatible with oh my fish themes and plugins?"
+    # .SS "4\. Is fisherman compatible with oh my fish themes and plugins?"
     # Yes\.
     # .
-    # .SS "7\. Why fisherman? Why not ____?"
-    # fisherman has / is:
-    # .
-    # .IP "\(bu" 4
-    # small and fits in one file
-    # .
-    # .IP "\(bu" 4
-    # zero impact on shell startup time
-    # .
-    # .IP "\(bu" 4
-    # fast and easy to install, update and uninstall
-    # .
-    # .IP "\(bu" 4
-    # no need to edit your fish configuration
-    # .
-    # .IP "\(bu" 4
-    # correct usage of the XDG base directory spec
-    # .
-    # .IP "" 0
-    # .
-    # .SS "8\. Where does fisherman put stuff?"
+    # .SS "5\. Where does fisherman put stuff?"
     # fisherman goes in \fB~/\.config/fish/functions/fisher\.fish\fR\.
     # .
     # .P
@@ -1825,7 +1753,7 @@ function __fisher_man_page_write
     # .P
     # The fishfile is saved to \fB~/\.config/fish/fishfile\fR\.
     # .
-    # .SS "9\. What is a fishfile and how do I use it?"
+    # .SS "6\. What is a fishfile and how do I use it?"
     # The fishfile \fB~/\.config/fish/fishfile\fR lists all the installed plugins\.
     # .
     # .P
@@ -1847,13 +1775,10 @@ function __fisher_man_page_write
     # .P
     # This mechanism only installs plugins and missing dependencies\. To remove a plugin, use \fBfisher rm\fR instead\.
     # .
-    # .SS "10\. Where can I find a list of fish plugins?"
-    # Browse the github/fisherman organization or use the online \fIhttp://fisherman\.sh/#search\fR search to discover content\.
+    # .SS "6\. Where can I find a list of fish plugins?"
+    # Browse \fIhttps://github\.com/fisherman\fR or use \fIhttp://fisherman\.sh/#search\fR to discover content\.
     # .
-    # .SS "11\. How do I upgrade from ____?"
-    # fisherman does not interfere with any known frameworks\. If you want to uninstall oh my fish, refer to their documentation\.
-    # .
-    # .SS "12\. What is a plugin?"
+    # .SS "7\. What is a plugin?"
     # A plugin is:
     # .
     # .IP "1." 4
@@ -1867,7 +1792,7 @@ function __fisher_man_page_write
     # .
     # .IP "" 0
     # .
-    # .SS "13\. How can I list plugins as dependencies to my plugin?"
+    # .SS "8\. How can I list plugins as dependencies to my plugin?"
     # Create a new \fBfishfile\fR file at the root level of your project and write in the plugin dependencies\.
     # .
     # .IP "" 4
@@ -1882,14 +1807,11 @@ function __fisher_man_page_write
     # .
     # .IP "" 0
     # .
-    # .SS "14\. What about fundle?"
-    # fundle inspired me to use a bundle file, but it still has limited capabilities and requires you to modify your fish configuration\.
-    # .
-    # .SS "15\. I have a question or request not addressed here\. Where should I put it?"
+    # .SS "9\. I have a question or request not addressed here\. Where should I put it?"
     # Create a new ticket on the issue tracker:
     # .
     # .IP "\(bu" 4
-    # https://github\.com/fisherman/fisherman/issues
+    # \fIhttps://github\.com/fisherman/fisherman/issues\fR
     # .
     # .IP "" 0
 end
