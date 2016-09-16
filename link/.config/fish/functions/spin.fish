@@ -1,1 +1,1 @@
-/Users/phunky/.config/fisherman/spin/functions/spin.fish
+/Users/phunky/.config/fisherman/spin/spin.fish

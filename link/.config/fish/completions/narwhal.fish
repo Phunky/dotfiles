@@ -1,0 +1,1 @@
+/Users/phunky/.config/fisherman/narwhal/completions/narwhal.fish

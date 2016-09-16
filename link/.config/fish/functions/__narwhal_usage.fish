@@ -1,0 +1,1 @@
+/Users/phunky/.config/fisherman/narwhal/functions/__narwhal_usage.fish

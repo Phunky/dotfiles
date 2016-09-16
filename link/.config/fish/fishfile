@@ -1,5 +1,7 @@
+fisherman/docker-completion
 fisherman/getopts
 fisherman/hulk
+0rax/narwhal
 fisherman/spin
 oh-my-fish/plugin-thefuck
 fisherman/z
